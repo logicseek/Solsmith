@@ -19,7 +19,7 @@ You can customize the number of generated programs and the output directory by m
 
 ```cpp
 for (int i = 0; i < 10000; i++) {
-    std::string testpath = "your/output/directory/";
+    string testpath = "your/output/directory/";
     // ...
 }
 ```
