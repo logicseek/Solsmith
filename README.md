@@ -22,6 +22,7 @@ for (int i = 0; i < 10000; i++) {
     std::string testpath = "your/output/directory/";
     // ...
 }
+```
 
 The loop count (`10000`) controls how many programs are generated.
 
