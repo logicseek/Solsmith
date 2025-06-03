@@ -48,11 +48,7 @@ int main() {
     srand(time(0));
     ofstream fout;
 
-    //vector<long long > a;
-    //for (int i = 0; i < 10; i++) {
-    //    a.emplace_back(i);
-    //}
-    //cout << a.size() << endl;
+
 
     for (int i = 0; i < 10000; i++) {
         string res = getFrame();

@@ -31,7 +31,7 @@ string loop_make_random() {
         res += "uint256 " + varname + " = 0;\n";
         break;
     }
-    // 加入循环不变量
+
     if (rand() % 3 == 1 && inLoop == 1) {
         res += "l_z = 1;\n";
     }
@@ -51,7 +51,7 @@ string loop_make_random() {
         }
     }
 
-    //中间调用block生成一系列块中的内容
+
     res += block_make_random();
     res += " \n }\n";
     if (outDefination) res += "}\n";

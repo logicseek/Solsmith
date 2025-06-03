@@ -9,10 +9,10 @@ extern int blockcount;
 extern int inLoop;
 
 string block_make_random() {
-    //创建新块，深度加一
+    
     blockcount++;
     string res;
-    //超过设置的块的数量上限,终止这个块的创建
+    
     if (blockcount >= 3) {
         int l = rand() % 5 + 1;
         for (int i = 0; i < l; i++)
@@ -38,7 +38,7 @@ string block_make_random() {
         }
     }
     blockcount--;
-    //出块，深度减一
+    
     return res;
 }
 

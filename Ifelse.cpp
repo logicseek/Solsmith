@@ -4,16 +4,16 @@
 #include "Function.h"
 #include "Block.h"
 
-extern vector<Variable> VariableList;//存放状态变量
-extern vector<Variable> LocalVarList;//存放局部变量
-extern vector<Variable> GlobalVarList;//存放全局变量
-extern vector<Variable> ArrayList; // 存放数组变量
-extern vector<sfunction> FuncReturnList;//存放函数名和返回值类型
+extern vector<Variable> VariableList;
+extern vector<Variable> LocalVarList;
+extern vector<Variable> GlobalVarList;
+extern vector<Variable> ArrayList;
+extern vector<sfunction> FuncReturnList;
 extern int inLoop;
 
 string returnInt(string int1, string int2) {
-    //输入两个int类型的值，得到int类型的值
-    //可进行的运算有：  +  -  *  /  |  &  ^
+
+
     string  res;
     res += "(" + int1;
     switch (rand() % 7) {
@@ -43,9 +43,7 @@ string returnInt(string int1, string int2) {
     return res;
 }
 string returnBool(string int1, string int2) {
-    //输入两个字符串表示两个Int类型的数
-    //两个int类型数要得到bool类型结果，可以由几种方法
-    //  <  >  ==  !=  
+
     string  res;
     res += "(" + int1;
     switch (rand() % 4) {
@@ -66,8 +64,7 @@ string returnBool(string int1, string int2) {
     return res;
 }
 string boolreturnBool(string bool1, string bool2) {
-    //输入两个字符串表示bool类型的变量
-    //将两个bool类型操作 || &&  == != 
+
     string  res;
     res += "(" + bool1;
     switch (rand() % 4) {
@@ -93,22 +90,22 @@ string ifelse_make_random() {
     string res;
     res += "\nif(";
 
-    //确定有几个变量或常量,保底一个
+
     int vl = VariableList.size() + LocalVarList.size() + ArrayList.size();
-    // 判断语句的深度
+
     int tmp = rand() % 3 + 1;
-    //得到几组bool类型变量
+
     string val1[4], val2[4], boolval[4];
     for (int i = 0; i < tmp; i++) {
         int t = rand() % vl;
         val1[i] = "int256(";
-        if (t < VariableList.size()) { //状态变量
+        if (t < VariableList.size()) {
             val1[i] += VariableList[t].Variablename;
         }
-        else if (t < VariableList.size() + LocalVarList.size()) { // 局部变量 
+        else if (t < VariableList.size() + LocalVarList.size()) {
             val1[i] += LocalVarList[t - VariableList.size()].Variablename;
         }
-        else{  // 数组
+        else{
             Variable tmpv = ArrayList[t - VariableList.size() - LocalVarList.size()];
             val1[i] += tmpv.Variablename + "[" + to_string(rand() % tmpv.a) + "]";
         }
@@ -116,13 +113,13 @@ string ifelse_make_random() {
 
         t = rand() % vl;
         val2[i] = "int256(";
-        if (t < VariableList.size()) { //状态变量
+        if (t < VariableList.size()) {
             val2[i] += VariableList[t].Variablename;
         }
-        else if (t < VariableList.size() + LocalVarList.size()) { // 局部变量 
+        else if (t < VariableList.size() + LocalVarList.size()) {
             val2[i] += LocalVarList[t - VariableList.size()].Variablename;
         }
-        else {  //  数组
+        else {
             Variable tmpv = ArrayList[t - VariableList.size() - LocalVarList.size()];
             val2[i] += tmpv.Variablename + "[" + to_string(rand() % tmpv.a) + "]";
         }
@@ -134,7 +131,7 @@ string ifelse_make_random() {
     }
     res += boolval[0] + ")\n{\n";
 
-    //插入其他语句
+
     res += block_make_random();
 
     if (inLoop != 0) {
